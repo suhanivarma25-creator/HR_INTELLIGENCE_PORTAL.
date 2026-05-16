@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <h2 class="mb-4">Compare with: {{ job.job_title }}</h2>
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <div class="row compare-layout">
+                    <div class="col-md-5">
+                        <h5 class="fw-bold">Market Job Description</h5>
+                        <div class="p-3 bg-light border rounded" style="max-height: 400px; overflow-y: auto;">
+                            {{ job.description }}
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <h5 class="fw-bold">Your Information</h5>
+                        <p class="text-muted small">Paste your resume content below <strong>OR</strong> upload a resume file (PDF, DOCX, TXT).</p>
+                        <form method="POST" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <textarea name="user_jd" class="form-control" rows="8" placeholder="Paste your resume or job description text here..."></textarea>
+                            </div>
+
+                            <div class="text-center my-3">
+                                <span class="badge bg-secondary px-3 py-2" style="font-size: 0.85rem;">OR</span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="resume_file" class="form-label fw-semibold">Upload Resume</label>
+                                <input type="file" name="resume_file" id="resume_file" class="form-control" accept=".pdf,.docx,.txt">
+                                <div class="form-text">Supported formats: PDF, DOCX, TXT</div>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success btn-lg">Analyze Skill Gap</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,170 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<style>
+    :root {
+        --theme-color: {{ theme_color }};
+    }
+    .result-card {
+        padding: 1.5rem !important;
+        height: 100%;
+        border-radius: 20px;
+    }
+    .chart-container-refined {
+        position: relative;
+        height: 250px;
+        width: 100%;
+    }
+    .badge-refined {
+        font-size: 0.85rem !important;
+        padding: 8px 14px !important;
+        margin: 4px !important;
+    }
+    .salary-box {
+        background-color: rgba(var(--theme-color-rgb, 79, 70, 229), 0.08);
+        border: 1px solid var(--theme-color);
+        border-radius: 12px;
+        padding: 15px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12 text-center mb-5">
+        <h2 class="display-5 fw-bold text-gradient">Deep Analysis Results</h2>
+        <p class="lead">Personalized Insights for <span style="color: var(--theme-color); font-weight: 700;">{{ job_title }}</span></p>
+    </div>
+</div>
+
+<div class="row g-4 mb-5">
+    <!-- Left Column: Score & Salary -->
+    <div class="col-md-4">
+        <div class="d-flex flex-column gap-4 h-100">
+            <!-- Score Card -->
+            <div class="card shadow-sm text-center result-card">
+                <h5 class="fw-bold mb-3">Competitiveness Score</h5>
+                <div class="display-3 fw-bold mb-2" style="color: var(--theme-color);">
+                    {{ score }}%
+                </div>
+                <div class="progress mb-3" style="height: 12px; border-radius: 6px; background-color: #f1f5f9;">
+                    <div class="progress-bar" role="progressbar" style="width: {{ score }}%; background-color: var(--theme-color);"></div>
+                </div>
+                <p class="text-muted small">Your profile matches {{ score }}% of the core market requirements for this position.</p>
+            </div>
+            
+            <!-- Salary Card -->
+            <div class="card shadow-sm result-card">
+                <h5 class="fw-bold mb-3">Est. Salary (INR)</h5>
+                <div class="salary-box text-center">
+                    <h4 class="fw-bold mb-0" style="color: var(--theme-color);">{{ salary }}</h4>
+                </div>
+                <p class="text-muted text-center mt-3 mb-0 small">Annual Gross Package (Market Average)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column: Chart -->
+    <div class="col-md-8">
+        <div class="card shadow-sm result-card">
+            <h5 class="fw-bold mb-4">Skill Distribution Breakdown</h5>
+            <div class="chart-container-refined">
+                <canvas id="skillChart"></canvas>
+            </div>
+            <div class="mt-4 text-center">
+                <p class="text-muted small">Comparison of matched skills vs. industry-standard requirements.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Skill Gaps and Matches -->
+<div class="row g-4 mb-5">
+    <div class="col-md-6">
+        <div class="card shadow-sm result-card border-top border-5" style="border-top-color: #ef4444 !important;">
+            <h5 class="fw-bold text-danger mb-4">Criticial Skill Gaps</h5>
+            <div class="d-flex flex-wrap">
+                {% if missing_skills %}
+                    {% for skill in missing_skills %}
+                        <span class="badge bg-danger badge-refined">{{ skill }}</span>
+                    {% endfor %}
+                {% else %}
+                    <div class="alert alert-success mt-2 w-100">
+                        ✨ Congratulations! You meet all listed market skill requirements.
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow-sm result-card border-top border-5" style="border-top-color: #10b981 !important;">
+            <h5 class="fw-bold text-success mb-4">Strengths & Matches</h5>
+            <div class="d-flex flex-wrap">
+                {% for skill in user_skills %}
+                    {% if skill in market_skills %}
+                        <span class="badge bg-success badge-refined">{{ skill }}</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recommended Certifications -->
+<div class="row mb-5">
+    <div class="col-md-12">
+        <div class="card shadow-sm result-card">
+            <h5 class="fw-bold mb-4">Bridge the Gap: Suggested Certifications</h5>
+            <div class="row g-3">
+                {% for cert in certifications %}
+                    <div class="col-md-4">
+                        <a href="{{ cert.url }}" target="_blank" class="list-group-item list-group-item-action h-100 d-flex justify-content-between align-items-center p-3 rounded shadow-sm border text-decoration-none">
+                            <div class="fw-semibold">{{ cert.name }}</div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="var(--theme-color)" class="bi bi-arrow-up-right-square" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"/>
+                            </svg>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const userSkillsCount = parseInt("{{ user_skills|length }}") || 0;
+    const missingSkillsCount = parseInt("{{ missing_skills|length }}") || 0;
+    const themeColor = "{{ theme_color }}";
+
+    const ctx = document.getElementById('skillChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Your Skills Found', 'Gap Remaining'],
+            datasets: [{
+                data: [userSkillsCount, missingSkillsCount],
+                backgroundColor: [themeColor, '#f8fafc'],
+                borderColor: themeColor,
+                borderWidth: 1,
+                hoverOffset: 15
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            cutout: '75%',
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom',
+                    labels: {
+                        padding: 25,
+                        font: {
+                            size: 14,
+                            weight: '600',
+                            family: 'Outfit'
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

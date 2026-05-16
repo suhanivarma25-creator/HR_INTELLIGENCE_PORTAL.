@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill-Gap HR Intelligence Portal — Project Presentation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Outfit', sans-serif; color: #1e293b; line-height: 1.7; padding: 40px 60px; max-width: 1000px; margin: 0 auto; }
+  @media print { body { padding: 20px 30px; font-size: 11pt; } .page-break { page-break-before: always; } }
+  h1 { font-size: 2rem; text-align: center; background: linear-gradient(135deg, #4f46e5, #ec4899); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px; }
+  .subtitle { text-align: center; color: #64748b; font-size: 1rem; margin-bottom: 30px; }
+  h2 { font-size: 1.3rem; color: #4f46e5; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; margin: 30px 0 15px; }
+  h3 { font-size: 1.05rem; color: #334155; margin: 18px 0 10px; }
+  p, li { font-size: 0.95rem; margin-bottom: 8px; }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 0.9rem; }
+  th { background: #4f46e5; color: white; padding: 10px 14px; text-align: left; }
+  td { padding: 8px 14px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) { background: #f8fafc; }
+  code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; font-family: 'Consolas', monospace; }
+  .code-block { background: #1e293b; color: #e2e8f0; padding: 16px 20px; border-radius: 10px; margin: 12px 0 20px; font-family: 'Consolas', monospace; font-size: 0.85rem; white-space: pre-wrap; overflow-x: auto; }
+  .highlight { background: linear-gradient(135deg, #f0f9ff, #ede9fe); border-left: 4px solid #4f46e5; padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 12px 0; }
+  .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin: 3px; }
+  .badge-blue { background: #dbeafe; color: #1e40af; }
+  .badge-green { background: #dcfce7; color: #166534; }
+  .badge-purple { background: #ede9fe; color: #5b21b6; }
+  .badge-red { background: #fee2e2; color: #991b1b; }
+  .flow-box { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 15px 0; }
+  .flow-step { background: #4f46e5; color: white; padding: 8px 16px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; }
+  .flow-arrow { font-size: 1.2rem; color: #94a3b8; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 12px 0; }
+  @media print { .two-col { grid-template-columns: 1fr 1fr; } }
+  .card { border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; }
+  .card h4 { color: #4f46e5; margin-bottom: 8px; font-size: 0.95rem; }
+  .section-icon { margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<h1>🎯 Skill-Gap HR Intelligence Portal</h1>
+<p class="subtitle">A Text Mining & NLP-Based Web Application for Skill Gap Analysis</p>
+
+<!-- ============ PROJECT OVERVIEW ============ -->
+<h2>📌 Project Overview</h2>
+<p>The <strong>Skill-Gap HR Intelligence Portal</strong> is a full-stack web application that uses <strong>Natural Language Processing (NLP) and Text Mining</strong> to analyze job descriptions, extract relevant skills, and provide a personalized <strong>competitiveness score</strong> to users. It bridges the gap between a candidate's existing skills and current market requirements.</p>
+
+<div class="highlight">
+<strong>Problem Statement:</strong> Job seekers often don't know which specific skills they are missing compared to what the market demands. This portal automates that analysis using text mining techniques — helping users identify gaps, get a match score, and find certifications to upskill.
+</div>
+
+<!-- ============ TECH STACK ============ -->
+<h2>🛠️ Technology Stack</h2>
+
+<h3>Frontend Technologies</h3>
+<table>
+  <tr><th>Technology</th><th>Purpose</th></tr>
+  <tr><td>HTML5</td><td>Page structure and semantic markup</td></tr>
+  <tr><td>CSS3 (Custom + Bootstrap 5.3)</td><td>Styling — glassmorphism effects, gradients, responsive design</td></tr>
+  <tr><td>JavaScript</td><td>Client-side interactivity</td></tr>
+  <tr><td>Chart.js</td><td>Data visualization — doughnut charts for skill distribution</td></tr>
+  <tr><td>Google Fonts (Outfit)</td><td>Premium typography</td></tr>
+  <tr><td>Jinja2 Templating</td><td>Dynamic HTML rendering from Flask backend</td></tr>
+</table>
+
+<h3>Backend Technologies</h3>
+<table>
+  <tr><th>Technology</th><th>Purpose</th></tr>
+  <tr><td>Python 3.14</td><td>Core programming language</td></tr>
+  <tr><td>Flask (≥ 3.0.0)</td><td>Lightweight web framework — routing, request handling</td></tr>
+  <tr><td>Flask-SQLAlchemy (≥ 3.1.1)</td><td>ORM for database operations</td></tr>
+  <tr><td>Flask-Login (≥ 0.6.3)</td><td>User session & authentication management</td></tr>
+  <tr><td>Flask-Bcrypt (≥ 1.0.1)</td><td>Secure password hashing</td></tr>
+  <tr><td>NLTK (≥ 3.8.1)</td><td>Text Mining — tokenization, stopword removal, skill extraction</td></tr>
+</table>
+
+<h3>Database & Deployment</h3>
+<table>
+  <tr><th>Technology</th><th>Purpose</th></tr>
+  <tr><td>SQLite</td><td>Lightweight relational database (file-based, no server needed)</td></tr>
+  <tr><td>Render</td><td>Cloud hosting platform (auto-deploys from GitHub)</td></tr>
+  <tr><td>Gunicorn (≥ 21.2.0)</td><td>Production WSGI server</td></tr>
+  <tr><td>GitHub</td><td>Version control & CI/CD trigger for auto-deployment</td></tr>
+</table>
+
+<!-- ============ ARCHITECTURE ============ -->
+<div class="page-break"></div>
+<h2>🏗️ System Architecture</h2>
+
+<div class="code-block">
+┌──────────────────────────────────────────────────────────┐
+│                    🖥️  FRONTEND (Browser)                │
+│   HTML/CSS/Bootstrap │ Chart.js │ Jinja2 Templates       │
+└──────────────┬───────────────────────────┬───────────────┘
+               │ HTTP Request              │ Rendered HTML
+               ▼                           ▲
+┌──────────────────────────────────────────────────────────┐
+│                    ⚙️  BACKEND (Flask)                    │
+│                                                          │
+│  ┌─────────────┐  ┌──────────────┐  ┌────────────────┐  │
+│  │ Flask Routes │  │  NLP Engine  │  │  Flask-Login   │  │
+│  │ & Controllers│  │   (NLTK)     │  │  (Auth/Bcrypt) │  │
+│  └──────┬──────┘  └──────┬───────┘  └───────┬────────┘  │
+└─────────┼────────────────┼──────────────────┼────────────┘
+          │                │                  │
+          ▼                ▼                  ▼
+┌──────────────────────────────────────────────────────────┐
+│                   🗄️  DATABASE (SQLite)                   │
+│                                                          │
+│   👤 Users (id, name, email, password_hash)              │
+│   💼 Jobs  (id, job_title, company, description) — 52    │
+│   🔧 Skills (id, skill_name, type: Hard/Soft) — 66      │
+└──────────────────────────────────────────────────────────┘
+</div>
+
+<!-- ============ DATABASE SCHEMA ============ -->
+<h2>🗃️ Database Schema</h2>
+
+<div class="two-col">
+<div class="card">
+  <h4>👤 User Table</h4>
+  <table>
+    <tr><th>Column</th><th>Type</th></tr>
+    <tr><td>id</td><td>Integer (PK)</td></tr>
+    <tr><td>name</td><td>String(100)</td></tr>
+    <tr><td>email</td><td>String(120), Unique</td></tr>
+    <tr><td>password</td><td>String(255), Hashed</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h4>💼 Job Table</h4>
+  <table>
+    <tr><th>Column</th><th>Type</th></tr>
+    <tr><td>id</td><td>Integer (PK)</td></tr>
+    <tr><td>job_title</td><td>String(100)</td></tr>
+    <tr><td>company</td><td>String(100)</td></tr>
+    <tr><td>description</td><td>Text</td></tr>
+  </table>
+</div>
+</div>
+
+<div class="card" style="max-width:350px;">
+  <h4>🔧 Skill Table</h4>
+  <table>
+    <tr><th>Column</th><th>Type</th></tr>
+    <tr><td>id</td><td>Integer (PK)</td></tr>
+    <tr><td>skill_name</td><td>String(100), Unique</td></tr>
+    <tr><td>type</td><td>String(50) — "Hard" or "Soft"</td></tr>
+  </table>
+</div>
+
+<h3>Data Volume</h3>
+<ul>
+  <li><strong>52 Job Roles</strong> across domains: AI/ML, Web Dev, Cybersecurity, Marketing, Finance, DevOps, Product, HR, etc.</li>
+  <li><strong>66 Predefined Skills</strong> — 54 Hard Skills + 12 Soft Skills</li>
+  <li><strong>Hard Skills:</strong> <span class="badge badge-blue">Python</span> <span class="badge badge-blue">JavaScript</span> <span class="badge badge-blue">React</span> <span class="badge badge-blue">AWS</span> <span class="badge badge-blue">Docker</span> <span class="badge badge-blue">Machine Learning</span> <span class="badge badge-blue">SQL</span> <span class="badge badge-blue">TensorFlow</span> <span class="badge badge-blue">Kubernetes</span> <span class="badge badge-blue">SEO</span> and 44 more</li>
+  <li><strong>Soft Skills:</strong> <span class="badge badge-green">Communication</span> <span class="badge badge-green">Leadership</span> <span class="badge badge-green">Teamwork</span> <span class="badge badge-green">Problem Solving</span> <span class="badge badge-green">Critical Thinking</span> <span class="badge badge-green">Creativity</span> <span class="badge badge-green">Adaptability</span> <span class="badge badge-green">Empathy</span> and 4 more</li>
+</ul>
+
+<!-- ============ TEXT MINING & NLP ============ -->
+<div class="page-break"></div>
+<h2>🔬 Text Mining & NLP — How It Works</h2>
+<p>This is the <strong>core intelligence</strong> of the portal. The NLP pipeline processes raw text through multiple stages to extract meaningful skill information.</p>
+
+<h3>Step 1: Text Preprocessing</h3>
+<div class="flow-box">
+  <span class="flow-step">Raw Text</span><span class="flow-arrow">→</span>
+  <span class="flow-step">Lowercase</span><span class="flow-arrow">→</span>
+  <span class="flow-step">Remove Special Chars</span><span class="flow-arrow">→</span>
+  <span class="flow-step">Tokenization</span><span class="flow-arrow">→</span>
+  <span class="flow-step">Stopword Removal</span>
+</div>
+
+<table>
+  <tr><th>Stage</th><th>What Happens</th><th>Example</th></tr>
+  <tr><td><strong>Lowercasing</strong></td><td>Converts all text to lowercase for uniform matching</td><td><code>"Python Developer"</code> → <code>"python developer"</code></td></tr>
+  <tr><td><strong>Special Char Removal</strong></td><td>Strips numbers, punctuation, symbols using regex <code>re.sub(r'[^a-zA-Z\s]', '', text)</code></td><td><code>"3+ years of exp."</code> → <code>"years of exp"</code></td></tr>
+  <tr><td><strong>Tokenization</strong></td><td>Splits text into individual words (tokens) using NLTK's <code>word_tokenize()</code></td><td><code>"python and flask"</code> → <code>["python", "and", "flask"]</code></td></tr>
+  <tr><td><strong>Stopword Removal</strong></td><td>Removes common English words (a, the, is, and, etc.) using NLTK's stopwords corpus</td><td><code>["python", "and", "flask"]</code> → <code>["python", "flask"]</code></td></tr>
+</table>
+
+<h3>Step 2: Skill Extraction (Pattern Matching)</h3>
+<p>After preprocessing, each cleaned token is compared against the <strong>predefined skill database</strong> (66 skills categorized as Hard or Soft):</p>
+<div class="code-block">for each token in processed_tokens:
+    if token exists in hard_skills_list  →  Add to user's Hard Skills
+    elif token exists in soft_skills_list →  Add to user's Soft Skills</div>
+<p>This extraction runs <strong>twice</strong>:</p>
+<ol>
+  <li>On the <strong>user's pasted resume/JD</strong> → extracts user's current skills</li>
+  <li>On the <strong>market job description</strong> from the database → extracts market-required skills</li>
+</ol>
+
+<h3>Step 3: Competitiveness Score Calculation</h3>
+<div class="highlight">
+  <strong>Formula:</strong><br>
+  <code style="font-size:1.1rem;">Competitiveness Score = (Matched Skills / Total Market Skills) × 100</code>
+</div>
+<table>
+  <tr><th>Variable</th><th>Meaning</th></tr>
+  <tr><td><code>matched_skills</code></td><td>Skills found in BOTH user text AND market JD</td></tr>
+  <tr><td><code>total_market_skills</code></td><td>Total skills required by the market job description</td></tr>
+  <tr><td><code>score</code></td><td>Percentage match (0–100%), rounded to 2 decimal places</td></tr>
+</table>
+
+<h3>Step 4: Gap Analysis</h3>
+<div class="code-block">missing_skills = [skill for skill in market_skills if skill NOT in user_skills]</div>
+<p>Skills present in the market JD but <strong>absent</strong> from the user's text are flagged as <strong>critical skill gaps</strong> and displayed as red badges on the results page.</p>
+
+<h3>Step 5: Certification Recommendation Engine</h3>
+<p>A mapping of missing skills → industry-recognized certifications provides actionable upskilling advice:</p>
+<table>
+  <tr><th>Missing Skill</th><th>Suggested Certification</th></tr>
+  <tr><td>AWS</td><td>AWS Certified Cloud Practitioner</td></tr>
+  <tr><td>Python</td><td>PCAP – Certified Associate in Python Programming</td></tr>
+  <tr><td>Machine Learning</td><td>Google ML Professional Certificate</td></tr>
+  <tr><td>Docker</td><td>Docker Certified Associate</td></tr>
+  <tr><td>Cybersecurity</td><td>CompTIA Security+</td></tr>
+  <tr><td>SQL</td><td>Google Data Analytics Professional</td></tr>
+  <tr><td>JavaScript / React</td><td>Meta Front-End Developer Certificate</td></tr>
+  <tr><td>Azure</td><td>Microsoft Certified: Azure Fundamentals</td></tr>
+  <tr><td>Kubernetes</td><td>CKAD: Certified Kubernetes Application Developer</td></tr>
+  <tr><td>TensorFlow</td><td>TensorFlow Developer Certificate</td></tr>
+  <tr><td>Scrum</td><td>Certified ScrumMaster (CSM)</td></tr>
+  <tr><td>Project Management</td><td>Google Project Management Certificate</td></tr>
+  <tr><td>SEO</td><td>HubSpot SEO Certification</td></tr>
+</table>
+<p>If fewer than 2 specific certifications are found, fallback recommendations (Google Professional Skills, LinkedIn Learning) are provided. Results are capped at 4 suggestions.</p>
+
+<!-- ============ USER FLOW ============ -->
+<div class="page-break"></div>
+<h2>🔄 User Flow</h2>
+<div class="flow-box">
+  <span class="flow-step">1. Landing Page</span><span class="flow-arrow">→</span>
+  <span class="flow-step">2. Register</span><span class="flow-arrow">→</span>
+  <span class="flow-step">3. Login</span><span class="flow-arrow">→</span>
+  <span class="flow-step">4. Dashboard</span><span class="flow-arrow">→</span>
+  <span class="flow-step">5. Search Jobs</span><span class="flow-arrow">→</span>
+  <span class="flow-step">6. Compare</span><span class="flow-arrow">→</span>
+  <span class="flow-step">7. NLP Analysis</span><span class="flow-arrow">→</span>
+  <span class="flow-step">8. Results</span>
+</div>
+
+<table>
+  <tr><th>Page</th><th>Route</th><th>Purpose</th></tr>
+  <tr><td><strong>Landing Page</strong></td><td><code>/</code></td><td>Hero section with project overview, "Get Started" and "Login" CTAs</td></tr>
+  <tr><td><strong>Register</strong></td><td><code>/register</code></td><td>User sign-up — name, email, password (hashed with Bcrypt)</td></tr>
+  <tr><td><strong>Login</strong></td><td><code>/login</code></td><td>Secure authentication using Flask-Login sessions</td></tr>
+  <tr><td><strong>Dashboard</strong></td><td><code>/dashboard</code></td><td>Personalized welcome screen + quick actions + market trend insights</td></tr>
+  <tr><td><strong>Search</strong></td><td><code>/search</code></td><td>Search bar to find jobs by title from 52-role database</td></tr>
+  <tr><td><strong>Compare</strong></td><td><code>/compare/&lt;id&gt;</code></td><td>Side-by-side view — market JD (left) + user paste area (right)</td></tr>
+  <tr><td><strong>Results</strong></td><td>(POST response)</td><td>Full analytics: score, chart, gaps, matches, certifications, salary</td></tr>
+</table>
+
+<!-- ============ KEY FEATURES ============ -->
+<h2>✨ Key Features</h2>
+
+<h3>1. 🔐 Secure Authentication</h3>
+<ul>
+  <li>Password hashing with <strong>Bcrypt</strong> — passwords never stored in plain text</li>
+  <li>Session management with <strong>Flask-Login</strong> — persistent login state</li>
+  <li>Protected routes — only authenticated users can access dashboard, search, and compare</li>
+</ul>
+
+<h3>2. 🔍 Job Search Engine</h3>
+<ul>
+  <li>Searches across <strong>52 detailed job roles</strong> from 13+ industry domains</li>
+  <li>Uses SQL <code>LIKE</code> query via SQLAlchemy's <code>.contains()</code> for flexible partial matching</li>
+  <li>Domains covered: AI/ML, Web Dev, DevOps, Cybersecurity, Marketing, Finance, HR, Product, Design, Data Science, Blockchain, Gaming, Robotics</li>
+</ul>
+
+<h3>3. 🧠 NLP-Powered Skill Extraction</h3>
+<ul>
+  <li><strong>NLTK</strong> library for tokenization (<code>word_tokenize</code>) and stopword removal</li>
+  <li>Regex-based text cleaning to remove noise from input</li>
+  <li>Matches tokens against <strong>66 predefined skills</strong> (54 Hard + 12 Soft)</li>
+  <li>Dual extraction — processes both user text AND market job description</li>
+</ul>
+
+<h3>4. 📊 Visual Analytics Dashboard</h3>
+<ul>
+  <li><strong>Doughnut Chart</strong> (Chart.js) — visual ratio of matched skills vs gaps</li>
+  <li><strong>Animated Progress Bar</strong> — competitiveness percentage with dynamic color</li>
+  <li><strong>Color-coded Badges</strong> — green for matched skills, red for skill gaps</li>
+</ul>
+
+<h3>5. 🎨 Dynamic Theming</h3>
+<p>The results page dynamically changes its accent color based on the job category:</p>
+<table>
+  <tr><th>Job Domain</th><th>Theme Color</th></tr>
+  <tr><td>Data / AI / ML</td><td><span style="color:#6366f1;font-weight:700;">🟣 Indigo (#6366f1)</span></td></tr>
+  <tr><td>Web / Frontend / Backend</td><td><span style="color:#10b981;font-weight:700;">🟢 Emerald (#10b981)</span></td></tr>
+  <tr><td>Security / Cyber</td><td><span style="color:#f43f5e;font-weight:700;">🔴 Rose (#f43f5e)</span></td></tr>
+  <tr><td>Other Roles</td><td><span style="color:#3b82f6;font-weight:700;">🔵 Blue (#3b82f6)</span></td></tr>
+</table>
+
+<h3>6. 📜 Certification Recommendations</h3>
+<ul>
+  <li>Maps missing skills to <strong>14 industry-recognized certifications</strong></li>
+  <li>Provides direct clickable links to certification pages (AWS, Google, Meta, CompTIA, etc.)</li>
+  <li>Fallback suggestions when no specific skill-to-cert match is found</li>
+</ul>
+
+<h3>7. 💰 Salary Insights</h3>
+<ul>
+  <li>Displays estimated annual salary range in INR (Indian market)</li>
+  <li>Current estimate: <strong>₹8,50,000 – ₹18,00,000</strong> per annum</li>
+</ul>
+
+<h3>8. 📱 Fully Responsive Design</h3>
+<ul>
+  <li>Mobile-responsive layout using CSS media queries (768px and 480px breakpoints)</li>
+  <li>Buttons stack vertically and center on small screens</li>
+  <li>Search bar and compare layout adapt to phone viewports</li>
+  <li>Glassmorphism navbar with gradient brand text</li>
+</ul>
+
+<!-- ============ FILE STRUCTURE ============ -->
+<div class="page-break"></div>
+<h2>🧩 Project File Structure</h2>
+<div class="code-block">HR_INTELLIGENCE_PORTAL/
+├── app.py              ← Main Flask app (routes, controllers, business logic)
+├── models.py           ← Database models (User, Job, Skill via SQLAlchemy)
+├── nlp_utils.py        ← NLP engine (preprocess, tokenize, extract skills, score)
+├── seed_db.py          ← Database seeder (52 jobs + 66 skills)
+├── requirements.txt    ← Python package dependencies
+├── setup_guide.md      ← Installation & setup instructions
+├── instance/
+│   └── skillgap.db     ← SQLite database file
+├── static/
+│   └── css/
+│       └── style.css   ← Custom CSS (glassmorphism, gradients, responsive)
+└── templates/
+    ├── layout.html     ← Base template (navbar, footer, Bootstrap, Chart.js)
+    ├── index.html      ← Landing / hero page
+    ├── register.html   ← Registration form
+    ├── login.html      ← Login form
+    ├── dashboard.html  ← User dashboard with quick actions
+    ├── search.html     ← Job search page
+    ├── compare.html    ← Side-by-side comparison page
+    └── results.html    ← Full analytics results dashboard</div>
+
+<!-- ============ DEPLOYMENT ============ -->
+<h2>🚀 Deployment Details</h2>
+<table>
+  <tr><th>Component</th><th>Detail</th></tr>
+  <tr><td><strong>Hosting Platform</strong></td><td>Render (Web Service)</td></tr>
+  <tr><td><strong>WSGI Server</strong></td><td>Gunicorn</td></tr>
+  <tr><td><strong>Source Repository</strong></td><td>GitHub — Akanksha-2712/HR_INTELLIGENCE_PORTAL</td></tr>
+  <tr><td><strong>Branch</strong></td><td>main</td></tr>
+  <tr><td><strong>Auto-Deploy</strong></td><td>Yes — every push to main triggers automatic redeployment</td></tr>
+  <tr><td><strong>Database</strong></td><td>SQLite (bundled with the application)</td></tr>
+</table>
+
+<!-- ============ FUTURE SCOPE ============ -->
+<h2>🔮 Future Scope</h2>
+<ol>
+  <li><strong>Multi-word Skill Matching</strong> — Match phrases like "machine learning" and "project management" using bigram/trigram NLP techniques</li>
+  <li><strong>Resume Upload (PDF/DOCX)</strong> — Parse uploaded resume files instead of requiring copy-paste</li>
+  <li><strong>Real-time Job Scraping</strong> — Pull live job listings from LinkedIn/Indeed APIs for real-time market data</li>
+  <li><strong>User History & Tracking</strong> — Save past comparisons and track skill growth over time with trend charts</li>
+  <li><strong>AI-Powered Recommendations</strong> — Use Large Language Models (LLMs) to generate personalized learning paths</li>
+  <li><strong>Dynamic Salary Data</strong> — Integrate salary APIs (Glassdoor, PayScale) for real-time market rate estimates</li>
+  <li><strong>Admin Dashboard</strong> — Allow admins to add/edit job roles and skills without touching code</li>
+</ol>
+
+<!-- ============ SUMMARY ============ -->
+<h2>📝 Summary</h2>
+<div class="highlight">
+This project demonstrates a practical application of <strong>Text Mining and Natural Language Processing (NLP)</strong> in the HR/recruitment domain. It combines <strong>skill extraction, gap analysis, competitiveness scoring, and data visualization</strong> into a user-friendly web portal built with a modern Python full-stack architecture (Flask + SQLite + NLTK + Chart.js). The application is deployed on Render with auto-deployment from GitHub, making it production-ready and accessible worldwide.
+</div>
+
+<br>
+<p style="text-align:center; color:#94a3b8; font-size:0.85rem;">© 2026 Skill-Gap HR Intelligence Portal — Built with Flask, NLTK & Chart.js</p>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2 class="mb-4 text-center">Find a Job to Compare</h2>
+        <div class="card shadow-sm mb-4 search-bar">
+            <div class="card-body">
+                <form method="POST" class="d-flex">
+                    <input type="text" name="job_title" class="form-control me-2" placeholder="Search by job title (e.g., Data Scientist)..." required>
+                    <button type="submit" class="btn btn-primary px-4">Search</button>
+                </form>
+            </div>
+        </div>
+
+        {% if jobs %}
+            <h4 class="mb-3">Results</h4>
+            <div class="list-group shadow-sm">
+                {% for job in jobs %}
+                    <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-3">
+                        <div>
+                            <h5 class="mb-1">{{ job.job_title }}</h5>
+                            <small class="text-muted">{{ job.company }}</small>
+                        </div>
+                        <a href="{{ url_for('compare', job_id=job.id) }}" class="btn btn-sm btn-outline-primary px-3">Select & Compare</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% elif request.method == 'POST' %}
+            <p class="text-center mt-4">No jobs found matching your search. Try "Data Scientist" or "Web Developer".</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

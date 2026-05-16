@@ -1,0 +1,316 @@
+:root {
+    --primary-color: #4f46e5;
+    --secondary-color: #1e293b;
+    --accent-color: #f43f5e;
+    --bg-light: #f3f4f6;
+    --text-dark: #111827;
+    --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Glassmorphism Navbar */
+.navbar {
+    background: rgba(17, 24, 39, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(to right, #818cf8, #34d399);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Jumbotron/Hero */
+.jumbotron {
+    background: white;
+    border-radius: 24px;
+    padding: 80px 40px !important;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.jumbotron::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    z-index: 0;
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #4f46e5, #ec4899);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: white;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    border: none;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+}
+
+.btn-primary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.6);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border: none;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+/* Badges */
+.badge {
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    text-transform: capitalize;
+}
+
+/* Charts and visuals */
+.display-3 {
+    text-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Custom list items */
+.list-group-item {
+    border-left: 4px solid transparent;
+    transition: all 0.2s;
+    margin-bottom: 5px;
+    border-radius: 8px !important;
+}
+
+.list-group-item:hover {
+    border-left: 4px solid var(--primary-color);
+    background-color: #f9fafb;
+}
+
+/* Hero CTA Buttons */
+.hero-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+    /* Hero / Jumbotron */
+    .jumbotron {
+        padding: 40px 20px !important;
+        border-radius: 16px;
+    }
+
+    .jumbotron .display-4 {
+        font-size: 1.75rem;
+    }
+
+    .jumbotron .lead {
+        font-size: 0.95rem;
+    }
+
+    /* CTA Buttons */
+    .hero-cta {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+        padding: 14px 20px;
+    }
+
+    /* General Typography */
+    .display-3 {
+        font-size: 2rem;
+    }
+
+    .display-5 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    /* Cards */
+    .card {
+        border-radius: 14px;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    /* Feature cards on index */
+    .row.mt-5 .col-md-4 {
+        margin-bottom: 0;
+    }
+
+    .row.mt-5 .card {
+        margin-bottom: 12px !important;
+    }
+
+    /* Buttons global */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .btn-lg {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    /* Navbar */
+    .navbar {
+        padding: 0.6rem 0;
+    }
+
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+
+    /* Container spacing */
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .container.mt-4 {
+        margin-top: 1rem !important;
+    }
+
+    /* Compare page: stack columns */
+    .compare-layout .col-md-5,
+    .compare-layout .col-md-7 {
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .compare-layout .p-3.bg-light {
+        max-height: 200px !important;
+        font-size: 0.85rem;
+    }
+
+    /* Results page */
+    .result-card {
+        padding: 1rem !important;
+        border-radius: 14px;
+    }
+
+    .chart-container-refined {
+        height: 200px;
+    }
+
+    .salary-box {
+        padding: 10px;
+    }
+
+    .badge-refined {
+        font-size: 0.75rem !important;
+        padding: 6px 10px !important;
+    }
+
+    /* Search page */
+    .search-bar .d-flex {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-bar .form-control {
+        margin-right: 0 !important;
+    }
+
+    .search-bar .btn {
+        width: 100%;
+    }
+
+    /* Auth forms */
+    .col-md-5 .card {
+        margin: 0 4px;
+    }
+
+    /* Footer */
+    footer {
+        font-size: 0.8rem;
+        padding: 1rem 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .jumbotron {
+        padding: 28px 16px !important;
+        border-radius: 12px;
+    }
+
+    .jumbotron .display-4 {
+        font-size: 1.4rem;
+    }
+
+    .navbar-brand {
+        font-size: 0.95rem;
+    }
+
+    .display-3 {
+        font-size: 1.6rem;
+    }
+
+    .progress {
+        height: 8px !important;
+    }
+}

@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="jumbotron text-center bg-light p-5 rounded-lg shadow-sm">
+    <h1 class="display-4 fw-bold text-gradient">Skill-Gap HR Intelligence</h1>
+    <p class="lead">Bridge the gap between your skills and market requirements using advanced NLP analysis.</p>
+    <hr class="my-4">
+    <p>Analyze job descriptions, extract key skills, and get personalized competitiveness scores.</p>
+    <div class="hero-cta mt-4">
+        {% if current_user.is_authenticated %}
+            <a class="btn btn-primary btn-lg px-5" href="{{ url_for('dashboard') }}" role="button">Go to Dashboard</a>
+        {% else %}
+            <a class="btn btn-primary btn-lg px-5" href="{{ url_for('register') }}" role="button">Get Started</a>
+            <a class="btn btn-outline-secondary btn-lg px-5" href="{{ url_for('login') }}" role="button">Login</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row mt-5 text-center">
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+                <h3 class="h5">NLP Powered Analysis</h3>
+                <p>We use state-of-the-art NLP to extract relevant hard and soft skills from any job description.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+                <h3 class="h5">Market Comparison</h3>
+                <p>Compare your skills against actual market requirements to see where you stand.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+                <h3 class="h5">Actionable Insights</h3>
+                <p>Get a competitiveness score and suggested certifications to bridge your skill gap.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

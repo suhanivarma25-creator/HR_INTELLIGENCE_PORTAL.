@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="mb-4">Welcome back, {{ name }}!</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body d-flex flex-column justify-content-between">
+                <div>
+                    <h5 class="card-title fw-bold">Analyze New Job</h5>
+                    <p class="card-text">Search for a job in our database and compare your experience with current market requirements.</p>
+                </div>
+                <a href="{{ url_for('search') }}" class="btn btn-primary mt-3">Start Searching</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Recent Market Trends</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">AI/ML skills are up 25% this month</li>
+                    <li class="list-group-item">Remote work mentions increased in 15% of postings</li>
+                    <li class="list-group-item">Demand for React developers remains high</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
